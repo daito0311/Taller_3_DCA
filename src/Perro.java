@@ -7,11 +7,19 @@ public class Perro implements Runnable {
 	private boolean fight;
 	private int contador;
 	private int vidas;
-private PApplet app;
+
 
 	
 	public Perro (Mundo m) {
-
+		this.m = m;
+		posX = (float) (Math.random()* 125 + 25);
+		posY = (float) (Math.random()* 475+125);
+		destX = 300;
+		destY = 300;
+		contador = 0;
+		fight = false;
+		vidas = 3;
+		
 	
 	}
 
@@ -22,8 +30,21 @@ private PApplet app;
 	}
 
 	public void pintar(PApplet app) {
-		// TODO Auto-generated method stub
 
+		app.fill(255, 255, 0, 20);
+		app.ellipse(posX, posY, 50, 50);
+mover();
+		
 	}
+	
+	private void mover() {
+		
+	posX ++;
+	
+		
+	}
+
+
+	
 
 }

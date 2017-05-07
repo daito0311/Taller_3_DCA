@@ -10,7 +10,17 @@ public class Gato implements Runnable {
 private PApplet app;
 	
 	public Gato(Mundo mundo) {
-		// TODO Auto-generated constructor stub
+
+		this.m = m;
+		posX = (float) (Math.random()* 1175 +450);
+		posY = (float) (Math.random()* 475+125);
+		destX = 300;
+		destY = 300;
+		contador = 0;
+		fight = false;
+		vidas = 3;
+		
+	
 	}
 
 	@Override
@@ -20,8 +30,16 @@ private PApplet app;
 	}
 
 	public void pintar(PApplet app) {
-		// TODO Auto-generated method stub
-		
+		app.fill(255, 255, 0, 20);
+		app.ellipse(posX, posY, 50, 50);
+mover();
+
+
+	}
+
+	private void mover() {
+
+		posX --; 
 	}
 
 }

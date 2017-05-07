@@ -9,7 +9,7 @@ public class Mundo {
 	private List<Perro> perros = Collections.synchronizedList(new ArrayList<Perro>());
 	private List<Gato> gatos = Collections.synchronizedList(new ArrayList<Gato>());
 	List<Comida> comidas = Collections.synchronizedList(new ArrayList<Comida>());
-
+PApplet app;
 	public Mundo() {
 
 		inicializar();
@@ -39,6 +39,11 @@ public class Mundo {
 	}
 
 	public synchronized void pintar(PApplet app) {
+		
+		// FONDO y marcos 
+		
+				app.rect(0, 0, 1200, 100);
+				app.rect(0, 600, 1200, 100);
 
 		synchronized (comidas) {
 			for (Comida comidas: comidas) {
@@ -68,4 +73,14 @@ public class Mundo {
 
 	}
 
+	public PApplet getApp() {
+		return app;
+	}
+
+	public void setApp(PApplet app) {
+		this.app = app;
+	}
+
+	
+	
 }
