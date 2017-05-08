@@ -51,7 +51,7 @@ public class Perro implements Runnable {
 
 	public void pintar(PApplet app) {
 		
-		System.out.println(doghueso);
+		//System.out.println(doghueso);
 		app.smooth();
 		app.imageMode(app.CENTER);
 

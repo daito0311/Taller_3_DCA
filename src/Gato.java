@@ -1,3 +1,5 @@
+import java.util.List;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -15,6 +17,8 @@ public class Gato implements Runnable {
 	private int DY = (int) Math.random() * 5 + 1;
 	private PImage gato1, gato2, gato3;
 private PApplet app;
+	private Comida catfish;
+	
 	
 	public Gato(PApplet app, Mundo mundo, int tipo) {
 
@@ -27,15 +31,24 @@ private PApplet app;
 		colectar = false;
 		vidas = 3;
 	this.tipo = tipo;
-		
+		catfish = null;
 		
 	
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		while (true) {
+
+			mover();
+			//comerPeces();
+
+			try {
+				Thread.sleep(17);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void pintar(PApplet app) {
@@ -60,22 +73,40 @@ private PApplet app;
 			gato3 = app.loadImage("../Data/Gato3.png");
 			app.image(gato3, posX, posY);
 		}
-mover();
+
 
 
 	}
+	
+	private synchronized void comerPeces() {
+		List<Comida> comidas = m.getComidas();
+		synchronized (comidas) {
+			for (Comida comida : comidas) {
+				if (PApplet.dist(posX, posY, comida.getPosX(), comida.getPosY()) < 15) {
+					destX = comida.getPosX();
+					destY = comida.getPosY();
+					if (comida.getTipo() ==2) {
+						catfish = comida;
+						break;
+					}
+				}
+			}
+		}
+	}
 
-private void mover() {
-		
+	private void mover() {
+
 		if (colectar) {
-			
-		}else {
+
+		} else {
 			this.posX = posX + (Velx * DX);
 			this.posY = posY + (Vely * DY);
 			this.posX += Velx * DX;
 		}
 		
-		
+		if (PApplet.dist(posX, posY, destX, destY) < 15) {
+			m.quitarpez(catfish);
+		}
 
 		if (this.posX > 1280 - 25) {
 			DX = -DX;
@@ -86,13 +117,14 @@ private void mover() {
 		if (this.posY > 175) {
 			DY = -DY;
 		}
-		if (this.posY < 800-175) {
+		if (this.posY < 800 - 175) {
 			DY = -DY;
 		}
-	
 		
 		
 	}
+
+
 
 
 }

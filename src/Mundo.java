@@ -7,7 +7,7 @@ import processing.core.PImage;
 
 public class Mundo {
 
-	private int pantallas;
+
 	private List<Perro> perros = Collections.synchronizedList(new ArrayList<Perro>());
 	private List<Gato> gatos = Collections.synchronizedList(new ArrayList<Gato>());
 	List<Comida> comidas = Collections.synchronizedList(new ArrayList<Comida>());
@@ -19,15 +19,14 @@ public class Mundo {
 		
 		
 		inicializar();
-		pantallas = 0;
+	
 		
 
 	}
 	
 	public Mundo(PApplet app){
-		pantallas = 0;
 
-inicio = app.loadImage("../Data/inicio-01.png");
+
 		
 	}
 
@@ -70,14 +69,7 @@ inicio = app.loadImage("../Data/inicio-01.png");
 
 	public synchronized void pintar(PApplet app) {
 
-		
-		
-		
-			
-		
 
-		
-	
 
 		synchronized (comidas) {
 			for (Comida comidas : comidas) {
@@ -144,6 +136,11 @@ inicio = app.loadImage("../Data/inicio-01.png");
 
 	public void quitarhueso(Comida doghueso) {
 		comidas.remove(doghueso);
+		
+	}
+
+	public void quitarpez(Comida catfish) {
+		comidas.remove(catfish);
 		
 	}
 
