@@ -20,7 +20,7 @@ private PImage perro1, perro2, perro3;
 	public Perro (PApplet app, Mundo m, int tipo) {
 		this.m = m;
 		posX = (float) (Math.random()* 125 + 25);
-		posY = (float) (Math.random()* 470+125);
+		posY = (float) (Math.random()* 400+150);
 		destX = 300;
 		destY = 300;
 		contador = 0;
@@ -89,16 +89,16 @@ app.smooth();
 
 	
 		
-		if (this.posX > 1200 - 25) {
+		if (this.posX > 1280 - 25) {
 			DX = -DX;
 		}
 		if (this.posX < 25) {
 			DX = -DX;
 		}
-		if (this.posY > 100 +  25) {
+		if (this.posY > 150) {
 			DY = -DY;
 		}
-		if (this.posY < 600-25) {
+		if (this.posY < 800-150) {
 			DY = -DY;
 		}
 	
