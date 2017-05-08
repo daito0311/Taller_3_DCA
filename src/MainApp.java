@@ -122,9 +122,17 @@ fondo = loadImage("../Data/fondo.png");
 		}
 		
 	if (pantallas ==4 ) {
-		m.crearAlimento(mouseX, mouseY);
+		
+		if (mouseButton == RIGHT) {
+			m.crearComidaDog(mouseX, mouseY);	
+		}
+		
+		if (mouseButton == LEFT) {
+		m.crearComidaCat(mouseX, mouseY);
+		}
 	}
 	
+	System.out.println(pantallas);
 	}
 
 }

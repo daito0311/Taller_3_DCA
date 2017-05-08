@@ -101,10 +101,16 @@ inicio = app.loadImage("../Data/inicio-01.png");
 
 	}
 
-	public void crearAlimento(int mouseX, int mouseY) {
-		// TODO Auto-generated method stub
-
+	public void crearComidaDog(int x, int y) {
+		comidas.add(new Comida(x, y, 1));
 	}
+	
+	public void crearComidaCat(int x, int y) {
+		comidas.add(new Comida(x, y, 2));
+		
+	}
+
+
 
 	public PApplet getApp() {
 		return app;
@@ -114,4 +120,35 @@ inicio = app.loadImage("../Data/inicio-01.png");
 		this.app = app;
 	}
 
+	public List<Comida> getComidas() {
+		return comidas;
+	}
+
+	public List<Perro> getPerros() {
+		return perros;
+	}
+
+	public void setPerros(List<Perro> perros) {
+		this.perros = perros;
+	}
+
+	public List<Gato> getGatos() {
+		return gatos;
+	}
+
+	public void setGatos(List<Gato> gatos) {
+		this.gatos = gatos;
+	}
+
+
+
+	public void quitarhueso(Comida doghueso) {
+		comidas.remove(doghueso);
+		
+	}
+
+	
+	
+	
+	
 }
