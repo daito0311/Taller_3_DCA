@@ -134,5 +134,7 @@ fondo = loadImage("../Data/fondo.png");
 	
 	System.out.println(pantallas);
 	}
+	
+	
 
 }

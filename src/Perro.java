@@ -12,11 +12,12 @@ public class Perro implements Runnable {
 	private int contador;
 	private int vidas;
 	private int tipo;
+	private float energia;
 	private float Velx = (float) 0.3;
 	private float Vely = (float) 0.3;
 	private int DX = (int) Math.random() * 5 + 1;
 	private int DY = (int) Math.random() * 5 + 1;
-	private PImage perro1, perro2, perro3;
+	private PImage perro1, perro2, perro3, vidaperro , vidaperro1, vidaperro2, vidaperro3;
 
 	private Comida doghueso;
 
@@ -28,7 +29,9 @@ public class Perro implements Runnable {
 		destY = 300;
 		contador = 0;
 		colectar = false;
-		vidas = 3;
+		vidas = 0;
+		energia = 1;
+		
 		this.tipo = tipo;
 		doghueso = null;
 
@@ -51,23 +54,123 @@ public class Perro implements Runnable {
 
 	public void pintar(PApplet app) {
 		
-		//System.out.println(doghueso);
+		
 		app.smooth();
 		app.imageMode(app.CENTER);
 
 		if (tipo == 1) {
-
+			
+			
+		// PERRO PUG 
+			vidaperro = app.loadImage("../Data/vidaperro0.png");
+			vidaperro1 = app.loadImage("../Data/vidaperro1.png");
+			vidaperro2 = app.loadImage("../Data/vidaperro2.png");
+			vidaperro3 = app.loadImage("../Data/vidaperro3.png");
 			perro1 = app.loadImage("../Data/Perro1.png");
 			app.image(perro1, posX, posY);
 
+			
+			// VIDAS 
+			switch (vidas) {
+			case 3:
+				app.image(vidaperro,  118+323, 127);
+				break;
+
+			case 2:
+				app.image(vidaperro1,  118+323, 127);
+				break;
+			case 1:
+				app.image(vidaperro2,   118+323, 127);
+				break;
+				
+			case 0:
+				
+				app.image(vidaperro3, 118+323, 127);
+				app.rectMode(app.CORNER);
+				app.fill(0,0,0,98);
+				app.rect(0+323,0, 162, 143);
+				
+				
+				break;
+			}
+			
+			// ENERGIA PERRO PUG 
+			app.rectMode(app.CORNER);
+			app.noStroke();
+			app.fill(0,255,0);
+			app.rect(650, 60, 10+energia,20 );
+			
 		} else if (tipo == 2) {
 
+			// PERRO DOBERMAN 
+			vidaperro = app.loadImage("../Data/vidaperro0.png");
+			vidaperro1 = app.loadImage("../Data/vidaperro1.png");
+			vidaperro2 = app.loadImage("../Data/vidaperro2.png");
+			vidaperro3 = app.loadImage("../Data/vidaperro3.png");
+			
 			perro2 = app.loadImage("../Data/Perro2.png");
 			app.image(perro2, posX, posY);
+			
+
+			// VIDAS 
+			switch (vidas) {
+			case 3:
+				app.image(vidaperro, 118+123, 127);
+				break;
+
+			case 2:
+				app.image(vidaperro1, 118, 127);
+				break;
+			case 1:
+				app.image(vidaperro2,  118, 127);
+				break;
+				
+			case 0:
+				
+				app.image(vidaperro3, 118+162, 127);
+				app.rectMode(app.CORNER);
+				app.fill(0,0,0,98);
+				app.rect(0+162,0, 162, 143);
+				
+				
+				break;
+			}
 
 		} else if (tipo == 3) {
+			
+			
+			vidaperro = app.loadImage("../Data/vidaperro0.png");
+			vidaperro1 = app.loadImage("../Data/vidaperro1.png");
+			vidaperro2 = app.loadImage("../Data/vidaperro2.png");
+			vidaperro3 = app.loadImage("../Data/vidaperro3.png");
+			
 			perro3 = app.loadImage("../Data/Perro3.png");
 			app.image(perro3, posX, posY);
+			
+
+			// VIDAS 
+			switch (vidas) {
+			case 3:
+				app.image(vidaperro, 118, 127);
+				break;
+
+			case 2:
+				app.image(vidaperro1, 118, 127);
+				break;
+			case 1:
+				app.image(vidaperro2,  118, 127);
+				break;
+				
+			case 0:
+				
+				app.image(vidaperro3, 118, 127);
+				app.rectMode(app.CORNER);
+				app.fill(0,0,0,98);
+				app.rect(0,0, 162, 143);
+				
+				
+				break;
+			}
 		}
 
 	}
@@ -81,6 +184,7 @@ public class Perro implements Runnable {
 					destX = comida.getPosX();
 					destY = comida.getPosY();
 					if (comida.getTipo() == 1) {
+						ganarenergia();
 						haycomida = true;
 						doghueso = comida;
 						break;
@@ -88,6 +192,11 @@ public class Perro implements Runnable {
 				}
 			}
 		}
+	}
+
+	private void ganarenergia() {
+		energia +=3;
+		
 	}
 
 	private void mover() {
@@ -117,6 +226,8 @@ public class Perro implements Runnable {
 			m.quitarhueso(doghueso);
 		}
 	}
+
+	
 
 
 }
