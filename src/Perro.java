@@ -95,10 +95,10 @@ app.smooth();
 		if (this.posX < 25) {
 			DX = -DX;
 		}
-		if (this.posY > 150) {
+		if (this.posY > 175) {
 			DY = -DY;
 		}
-		if (this.posY < 800-150) {
+		if (this.posY < 800-175) {
 			DY = -DY;
 		}
 	
