@@ -84,10 +84,10 @@ fondo = loadImage("../Data/fondo.png");
 			image(fondo,0,0);
 			imageMode(CENTER);
 			m.pintar(this);
+			imageMode(CORNER);
+
+			
 			break;
-			
-		
-			
 		
 	
 		}
@@ -136,6 +136,8 @@ fondo = loadImage("../Data/fondo.png");
 		}
 	}
 	} 
+	
+	
 	
 	
 	}

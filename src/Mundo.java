@@ -12,7 +12,8 @@ public class Mundo {
 	private List<Gato> gatos = Collections.synchronizedList(new ArrayList<Gato>());
 	List<Comida> comidas = Collections.synchronizedList(new ArrayList<Comida>());
 	PApplet app;
-
+	private int gatosmuertos;
+	private int perrosmuertos;
 	PImage inicio, binicio, b2inicio;
 
 	public Mundo() {
@@ -24,6 +25,7 @@ public class Mundo {
 
 		// PERROS
 
+		
 		Perro p = new Perro(app, this, 1);
 		Perro p2 = new Perro(app, this, 2);
 		Perro p3 = new Perro(app, this, 3);
@@ -53,7 +55,7 @@ public class Mundo {
 		gatos.add(g3);
 		
 		
-		// COMIDA
+	
 		
 
 
@@ -86,6 +88,24 @@ public class Mundo {
 			}
 		}
 
+		
+		if (gatosmuertos==3) {
+			app.fill(255);
+			app.rect(0,0,1280,800);
+			app.textSize(80);
+			app.fill(0);
+			app.text("Ganaron Los Perros", app.width/2-380, app.height/2-50);
+			
+		}
+		
+		if (perrosmuertos==3) {
+			app.fill(255);
+			app.rect(0,0,1280,800);
+			app.textSize(80);
+			app.fill(0);
+			app.text("Ganaron Los Gatos", app.width/2-380, app.height/2-50);
+			
+		}
 	}
 
 	public void crearComidaDog(int x, int y) {
@@ -137,7 +157,24 @@ public class Mundo {
 
 	public void quitargato(Gato presagatuna) {
 		gatos.remove(presagatuna);
+		gatosmuertos++;
 		
+	}
+
+	public int getGatosmuertos() {
+		return gatosmuertos;
+	}
+
+	public void setGatosmuertos(int gatosmuertos) {
+		this.gatosmuertos = gatosmuertos;
+	}
+
+	public int getPerrosmuertos() {
+		return perrosmuertos;
+	}
+
+	public void setPerrosmuertos(int perrosmuertos) {
+		this.perrosmuertos = perrosmuertos;
 	}
 
 	

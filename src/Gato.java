@@ -160,6 +160,30 @@ energia = 1;
 	public void setVidas(int vidas) {
 		this.vidas = vidas;
 	}
+
+	public float getEnergia() {
+		return energia;
+	}
+
+	public void setEnergia(float energia) {
+		this.energia = energia;
+	}
+
+	public float getVelx() {
+		return Velx;
+	}
+
+	public void setVelx(float velx) {
+		Velx = velx;
+	}
+
+	public float getVely() {
+		return Vely;
+	}
+
+	public void setVely(float vely) {
+		Vely = vely;
+	}
 	
 	
 	
