@@ -11,6 +11,7 @@ public class Gato implements Runnable {
 	private int contador;
 	private int vidas;
 	private int tipo;
+	private float energia;
 	private float Velx = (float) 0.3;
 	private float Vely = (float) 0.3;
 	private int DX = (int) Math.random() * 5 + 1;
@@ -23,7 +24,7 @@ public class Gato implements Runnable {
 
 		this.m = m;
 		posX = (float) (Math.random() * 100 + 25) + 1000;
-		posY = (float) (Math.random() * 400 + 150);
+		posY = (float) (Math.random() * 425 + 150);
 		destX = 300;
 		destY = 300;
 		contador = 0;
@@ -31,7 +32,7 @@ public class Gato implements Runnable {
 		vidas = 3;
 		this.tipo = tipo;
 		catfish = null;
-
+energia = 1;
 	}
 
 	@Override
@@ -56,8 +57,16 @@ public class Gato implements Runnable {
 
 		if (tipo == 1) {
 
+			System.out.println(vidas);
 			gato1 = app.loadImage("../Data/Gato1.png");
 			app.image(gato1, posX, posY);
+			
+
+			// ENERGIA GATO 1
+			app.rectMode(app.CORNER);
+			app.noStroke();
+			app.fill(255,0,0);
+			app.rect(100, 700, 10+energia,20 );
 
 		} else if (tipo == 2) {
 
@@ -79,12 +88,19 @@ public class Gato implements Runnable {
 					destX = comida.getPosX();
 					destY = comida.getPosY();
 					if (comida.getTipo() == 2) {
+						ganarenergia();
 						catfish = comida;
 						break;
 					}
 				}
 			}
 		}
+	}
+
+	private void ganarenergia() {
+		energia +=3;
+		Velx+= 0.1;
+		Vely+= 0.1;		
 	}
 
 	private void mover() {
@@ -115,5 +131,38 @@ public class Gato implements Runnable {
 		}
 
 	}
+
+	public float getPosX() {
+		return posX;
+	}
+
+	public void setPosX(float posX) {
+		this.posX = posX;
+	}
+
+	public float getPosY() {
+		return posY;
+	}
+
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+
+	public void restarvida() {
+		vidas-=1;
+		
+	}
+
+	public int getVidas() {
+		return vidas;
+	}
+
+	public void setVidas(int vidas) {
+		this.vidas = vidas;
+	}
+	
+	
+	
+	
 
 }

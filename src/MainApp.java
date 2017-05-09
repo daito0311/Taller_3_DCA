@@ -123,6 +123,10 @@ fondo = loadImage("../Data/fondo.png");
 		
 	if (pantallas ==4 ) {
 		
+		
+		if (mouseY >160 && mouseY < 640) {
+			
+		
 		if (mouseButton == RIGHT) {
 			m.crearComidaDog(mouseX, mouseY);	
 		}
@@ -131,8 +135,9 @@ fondo = loadImage("../Data/fondo.png");
 		m.crearComidaCat(mouseX, mouseY);
 		}
 	}
+	} 
 	
-	System.out.println(pantallas);
+	
 	}
 	
 	

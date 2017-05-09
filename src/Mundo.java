@@ -135,4 +135,11 @@ public class Mundo {
 
 	}
 
+	public void quitargato(Gato presagatuna) {
+		gatos.remove(presagatuna);
+		
+	}
+
+	
+
 }
